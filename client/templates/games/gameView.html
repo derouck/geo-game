@@ -1,0 +1,17 @@
+<template name="gameView">
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">Game</h1>
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionContent}}
+            <section id="game">
+                {{#ionList}}
+                  {{#with game}}
+{{name}}
+                  {{/with}}
+                {{/ionList}}
+            </section>
+        {{/ionContent}}
+    {{/ionView}}
+</template>
