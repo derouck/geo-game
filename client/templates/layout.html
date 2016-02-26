@@ -1,27 +1,24 @@
 <template name="layout">
-
     {{#ionBody}}
         {{> ionNavBar class="bar-assertive"}}
         {{#ionNavView}}
             {{> yield}}
         {{/ionNavView}}
-<!-- 
-        {{#ionTabs class="tabs-assertive tabs-icon-top"}}
-            {{#if isActiveRoute regex='login|rulesInAdvance|leaderboard'}}
-                {{#if currentUser}}
-                    {{>ionTab title="RULES" path="rulesInAdvance" iconOff="ios-bookmarks-outline" iconOn="ios-bookmarks"}}
-                {{/if}}
-                {{>ionTab title="LOGIN" path="login" iconOff="ios-checkmark-outline" iconOn="ios-checkmark"}}
-                {{> ionTab title="RANKING" path="leaderboard" iconOff="podium" iconOn="podium"}}
-            {{/if}}
 
-            {{#if isNotActiveRoute regex='login|rulesInAdvance|leaderboard'}}
-                {{> ionTab title="RULES" path="rules" iconOff="ios-bookmarks-outline" iconOn="ios-bookmarks"}}
-                {{> ionTab title="TEAM" path="team" iconOff="ios-people-outline" iconOn="ios-people"}}
-                {{> ionTab title="GAME" path="overview" iconOff="ios-game-controller-b-outline" iconOn="ios-game-controller-b"}}
-                {{> ionTab title="RANKING" path="leaderboard" iconOff="podium" iconOn="podium"}}
+        {{#ionTabs class="tabs-assertive tabs-icon-top"}}
+            <!--{{#if isActiveRoute regex='login|rulesInAdvance|leaderboard'}}-->
+                <!--{{#if currentUser}}-->
+                    <!--{{>ionTab title="RULES" path="rulesInAdvance" iconOff="ios-bookmarks-outline" iconOn="ios-bookmarks"}}-->
+                <!--{{/if}}-->
+                <!--{{>ionTab title="LOGIN" path="login" iconOff="ios-checkmark-outline" iconOn="ios-checkmark"}}-->
+                <!--{{> ionTab title="RANKING" path="leaderboard" iconOff="podium" iconOn="podium"}}-->
+            <!--{{/if}}-->
+
+            {{#if isNotActiveRoute regex='login'}}
+                {{> ionTab title="GAMES" path="gamesList" iconOff="ios-game-controller-b-outline" iconOn="ios-game-controller-b"}}
+                {{> ionTab title="CREATE GAME" path="createGame" iconOff="ios-game-controller-b-outline" iconOn="ios-game-controller-b"}}
             {{/if}}
-        {{/ionTabs}} -->
+        {{/ionTabs}}
     {{/ionBody}}
 
 </template>

@@ -1,15 +1,16 @@
 Meteor.startup(function () {
     if(Meteor.users.find().count() == 0) {
         var users = [
-            {name: "Chris", email: "chris@geogames.com", roles: ['admin']},
-            {name: "Alexis", email: "alexis@geogames.com", roles: ['admin']},
-            {name: "Joni", email: "joni@geogames.com", roles: ['admin']}
+            {name: "chris", email: "chris@geogames.com", roles: ['admin']},
+            {name: "alexis", email: "alexis@geogames.com", roles: ['admin']},
+            {name: "joni", email: "joni@geogames.com", roles: ['admin']}
         ];
 
         var userId;
         _.each(users, function (user) {
 
             userId = Accounts.createUser({
+                username: user.name,
                 email: user.email,
                 password: "geogames"
             });

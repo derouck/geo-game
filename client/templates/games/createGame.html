@@ -1,0 +1,15 @@
+<template name="createGame">
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">Create Game</h1>
+        {{>logout}}
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionContent}}
+            <section id="games">
+                {{> quickForm id="createGame" schema="Schemas.CreateGameForm" type="method" meteormethod="createGame"
+                template="ionic" buttonContent="Create Game" buttonClasses="button button-positive button-block button-outline" }}
+            </section>
+        {{/ionContent}}
+    {{/ionView}}
+</template>
