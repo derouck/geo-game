@@ -20,7 +20,7 @@ Meteor.publish('games', function() {
 });
 
 Meteor.publish('currentGame', function(id) {
-  return Games.findOne(id);
+  return Games.find(id);
 });
 
 Meteor.publish('readyGames', function(){
