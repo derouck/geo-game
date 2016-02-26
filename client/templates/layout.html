@@ -1,12 +1,12 @@
 <template name="layout">
 
     {{#ionBody}}
-        {{> ionNavBar class="bar-balanced"}}
+        {{> ionNavBar class="bar-assertive"}}
         {{#ionNavView}}
             {{> yield}}
         {{/ionNavView}}
 
-        {{#ionTabs class="tabs-balanced tabs-icon-top"}}
+        {{#ionTabs class="tabs-assertive tabs-icon-top"}}
             {{#if isActiveRoute regex='login|rulesInAdvance|leaderboard'}}
                 {{#if currentUser}}
                     {{>ionTab title="RULES" path="rulesInAdvance" iconOff="ios-bookmarks-outline" iconOn="ios-bookmarks"}}
