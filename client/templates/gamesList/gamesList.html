@@ -1,0 +1,20 @@
+<template name="gamesList">
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">Games List</h1>
+        {{>logout}}
+    {{/contentFor}}
+
+
+    {{#ionView}}
+        {{#ionContent}}
+            <section id="games">
+                {{#ionList}}
+                    {{#each games}}
+                        {{> gameCard}}
+                    {{/each}}
+                {{/ionList}}
+            </section>
+        {{/ionContent}}
+    {{/ionView}}
+
+</template>
