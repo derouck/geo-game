@@ -1,0 +1,15 @@
+<template name="addWaypoint">
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">Add Waypoint</h1>
+        {{>logout}}
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionContent}}
+            <section id="games">
+                {{> quickForm id="addWaypoint" schema="Schemas.AddWaypoint" type="method" meteormethod="addWaypoint"
+                template="ionic" buttonContent="Add waypoint" buttonClasses="button button-positive button-block button-outline" }}
+            </section>
+        {{/ionContent}}
+    {{/ionView}}
+</template>

@@ -2,7 +2,9 @@ AutoForm.hooks({
     createGame: {
         onSuccess(operation, result, template) {
             sAlert.success("Created game successfully!");
-            Router.go('/gamesList');
+            if(result){
+                Router.go('/add-waypoint/' + result);
+            }
         },
         onError(operation, error, template) {
             console.log(error);
