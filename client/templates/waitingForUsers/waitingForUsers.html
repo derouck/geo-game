@@ -1,0 +1,24 @@
+<template name="waitingForUsers">
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">WAITING QUEUE</h1>
+        {{>logout}}
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionContent}}
+            <section id="users">
+                <h1>{{gameName}}</h1>
+                {{#ionList}}
+                    {{#each inGameUsers}}
+                        {{#ionItem avatar=true}}
+                            <img src="http://api.adorable.io/avatars/50/{{_id}}" class="user-image"/>
+                            <p>{{username}}</p>
+                        {{/ionItem}}
+                    {{/each}}
+                {{/ionList}}
+
+                <button type="button" id="start-game" class="button button-positive" disabled>Start the Game</button>
+            </section>
+        {{/ionContent}}
+    {{/ionView}}
+</template>

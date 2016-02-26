@@ -1,0 +1,22 @@
+.beacon-card {
+    .item-avatar {
+        //padding-left: 20px !important;
+
+        a {
+            text-decoration: none;
+            img {
+
+            }
+        }
+    }
+
+    .item {
+        border: none !important;
+
+        p {
+            overflow: auto;
+            white-space: normal;
+            text-overflow: initial;
+        }
+    }
+}

@@ -1,0 +1,43 @@
+h1 {
+	font-size: 1.75em;
+}
+h2 {
+	font-size: 1.5em;
+}
+h3 {
+	font-size: 1.25em;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+.centered {
+	display: block;
+	margin: auto;
+}
+
+.lead {
+	font-size: 1.2em;
+}
+
+.label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
+.card {
+	.item {
+		span.badge {
+			margin-right: 10px;
+		}
+	}
+}

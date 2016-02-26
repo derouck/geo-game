@@ -1,0 +1,5 @@
+<template name="logout">
+    {{#if currentUser}}
+        <button id="logout" class="button button-small button-clear button-light" onclick="Meteor.logout();">Logout</button>
+    {{/if}}
+</template>

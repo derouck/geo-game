@@ -1,0 +1,35 @@
+#users, #games, #leaderboard {
+    margin: 5vh 5vw;
+
+    button#start-game {
+        margin-top: 4vh;
+    }
+
+    .user {
+        height: 10vh;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+
+        img.user-image {
+            display: inline-block;
+        }
+
+        p {
+            flex-grow: 3;
+            display: inline-block;
+            margin-left: 2vw;
+        }
+
+        .join-game {
+            flex-grow: 1;
+            flex-wrap: wrap;
+            float: right;
+        }
+    }
+
+    .game {
+        height: 7vh !important;
+    }
+}

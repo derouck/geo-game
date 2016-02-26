@@ -1,0 +1,19 @@
+<template name="overview">
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">GAME</h1>
+      {{>logout}}
+  {{/contentFor}}
+
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#ionList}}
+        {{#each beacons}}
+          {{> beacon}}
+        {{/each}}
+      {{/ionList}}
+
+
+    {{/ionContent}}
+  {{/ionView}}
+</template>
