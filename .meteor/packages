@@ -38,3 +38,6 @@ ground:db
 standard-minifier-css
 standard-minifier-js
 mdg:geolocation
+aldeed:autoform
+aldeed:collection2
+
