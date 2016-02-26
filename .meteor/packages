@@ -22,7 +22,7 @@ meteoric:ionic
 useraccounts:core
 useraccounts:ionic
 accounts-password
-#useraccounts:iron-routing
+useraccounts:iron-routing
 mizzao:user-status
 ando:persistent-session
 ejson
@@ -40,4 +40,7 @@ standard-minifier-js
 mdg:geolocation
 aldeed:autoform
 aldeed:collection2
+dburles:google-maps
+yogiben:autoform-map
 
+#reywood:publish-composite
