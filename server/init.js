@@ -1,8 +1,8 @@
 Meteor.startup(function () {
     if (Meteor.users.find().count() == 0) {
         var users = [
-            {name: "chris", username: "chris", email: "chris@geogames.com", roles: ['admin']},
             {name: "alexis", username: "alexis", email: "alexis@geogames.com", roles: ['admin']},
+            {name: "chris", username: "chris", email: "chris@geogames.com", roles: ['admin']},
             {name: "joni", username: "joni", email: "joni@geogames.com", roles: ['admin']}
         ];
 
@@ -74,6 +74,7 @@ Meteor.startup(function () {
             "gameId": game._id
         });
 
+        Results.remove({});
         if (Results.find().count() === 0) {
 
             game = Games.findOne();

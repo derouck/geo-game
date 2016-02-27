@@ -2,12 +2,18 @@ Template.leaderboard.onCreated(function(){
 	var instance = this;
 
 	instance.autorun(function () {
-		instance.subscribe('teamScores');
+
 	});
 });
 
+Results.helpers({
+	username: function() {
+		return Meteor.users.findOne(this.userId);
+	}
+});
+
 Template.leaderboard.helpers({
-	teams: function(){
-		return Games.find({}).fetch();
+	results: function(){
+		return Results.find({gameId: this.gameId}).fetch();
 	}
 });

@@ -40,6 +40,14 @@ Meteor.methods({
 		};
 
 		return Results.insert(document);
+	},
+	saveLocationToHistory: function(resultId,location) {
+		LocationsHistory.insert({
+			userId: this.userId,
+			resultId:resultId,
+			location:location,
+			time: new Date()
+		});
 	}
 });
 
