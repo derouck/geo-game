@@ -50,10 +50,10 @@ Template.play.helpers({
     return wps;
   },
   locationsHistory(){
-    return LocationsHistory.find({resultId:getCurrentResult()._id, userId: Meteor.userId()});
+    return LocationsHistory.find({resultId:getCurrentResultId(), userId: Meteor.userId()});
   },
   resultId(){
-    let wps = getCurrentResult()._id;
+    let wps = getCurrentResultId();
     return wps;
   }
 });
