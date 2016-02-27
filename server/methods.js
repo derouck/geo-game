@@ -10,7 +10,15 @@ var teamNames = [
 
 Meteor.methods({
 	updateNearestBeacon: function(id) {
-		return Meteor.users.update({_id:this.userId},{$set:{nearestBeacon:id}});
+		return Meteor.users.update({_id: this.userId},{$set:{nearestBeacon:id}});
+	},
+	saveLocationToHistory: function(resultId,location) {
+		LocationsHistory.insert({
+	    userId: this.userId,
+	    resultId:resultId,
+	    location:location,
+	    time: new Date()
+	  });
 	},
 	joinGame: function(id) {
 		return Games.update(id, {$push: {players: this.userId}});
