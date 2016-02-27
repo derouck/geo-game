@@ -2,7 +2,15 @@
 
   {{#contentFor "headerTitle"}}
     <h1 class="title">PLAY</h1>
-      {{>logout}}
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton class="button-positive" text=false}}
+
+  {{/contentFor}}
+  {{#contentFor "headerButtonRight"}}
+
+    <button class="button button-clear button-stop">Stop</button>
   {{/contentFor}}
 
     {{#ionView}}
