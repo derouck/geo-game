@@ -2,16 +2,35 @@ const getCurrentResult = () => {
 
   return Results.findOne({userId:Meteor.userId()});
 }
+const getCurrentResultId = () => {
+  let result = getCurrentResult();
+  if(result){
+    return result._id;
+  }
+  else {
+    return null;
+  }
+}
 
 const getCurrentGame = () => {
-  gameId = getCurrentResult().gameId;
-  return Games.findOne({_id:gameId});
+  result = getCurrentResult();
+  if(result){
+    return Games.findOne({_id:result.gameId});
+  }
+  else {
+    return null;
+  }
 }
 
 const getCurrentGameWaypoints = () => {
   game = getCurrentGame();
-  let gameId = getCurrentGame()._id;
-  return Waypoints.find({gameId:gameId}).fetch();
+  if(game){
+    let gameId = getCurrentGame()._id;
+    return Waypoints.find({gameId:gameId}).fetch();
+  }
+  else {
+    return [];
+  }
 }
 
 Template.map.onCreated(function() {
@@ -31,10 +50,10 @@ Template.play.helpers({
     return wps;
   },
   locationsHistory(){
-    return LocationsHistory.find({resultId:getCurrentResult()._id, userId: Meteor.userId()});
+    return LocationsHistory.find({resultId:getCurrentResultId(), userId: Meteor.userId()});
   },
   resultId(){
-    let wps = getCurrentResult()._id;
+    let wps = getCurrentResultId();
     return wps;
   }
 });
