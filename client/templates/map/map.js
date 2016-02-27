@@ -9,7 +9,7 @@ Template.map.onCreated(function() {
   var self = this;
 
   self.data.waypoints = self.data.waypoints ? self.data.waypoints : [];
-  self.data.history = self.data.history ? self.data.history : [];
+  self.data.history = self.data.history ? self.data.history : null;
   self.data.resultId = self.data.resultId ? self.data.resultId : null;
   self.data.saveLocation = self.data.saveLocation ? self.data.saveLocation : false;
   self.data.showCurrentLocation = self.data.showCurrentLocation ? self.data.showCurrentLocation : false;
@@ -75,26 +75,29 @@ Template.map.onCreated(function() {
       }
     });
 
-    self.autorun(function() {
-      // plotting history
-      _.each(self.data.history.fetch(), (element) => {
-            let hWPLatLng = element.location.split(",");
-            [lat, lng] = hWPLatLng;
-            let historyPoint = history[element._id];
-            if (! historyPoint) {
-              image = 'https://storage.googleapis.com/support-kms-prod/SNP_2752125_en_v0';
-              waypoint = new google.maps.Marker({
-                position: new google.maps.LatLng(lat, lng),
-                map: map.instance,
-                icon:image
-              });
-            }
-            // The marker already exists, so we'll just change its position.
-            else {
-              historyPoint.setPosition(latLng);
-            }
+    if(self.data.showCurrentLocation && self.data.history){
+      self.autorun(function() {
+        // plotting history
+        _.each(self.data.history.fetch(), (element) => {
+              let hWPLatLng = element.location.split(",");
+              [lat, lng] = hWPLatLng;
+              let historyPoint = history[element._id];
+              if (! historyPoint) {
+                image = 'https://storage.googleapis.com/support-kms-prod/SNP_2752125_en_v0';
+                waypoint = new google.maps.Marker({
+                  position: new google.maps.LatLng(lat, lng),
+                  map: map.instance,
+                  icon:image
+                });
+              }
+              // The marker already exists, so we'll just change its position.
+              else {
+                historyPoint.setPosition(latLng);
+              }
+        });
       });
-    });
+    }
+
 
   });
 });
