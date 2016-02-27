@@ -83,26 +83,27 @@ Template.map.onCreated(function() {
         map.instance.setCenter(marker.getPosition());
         map.instance.setZoom(MAP_ZOOM);
 
-        let wpDistances = _.map(self.data.waypoints, (element)=>{
+        let wpInRange = [];
+        let wpDistances = _.each(self.data.waypoints, (element)=>{
           let coordinates = element.location.split(",");
           [lat, lng] = coordinates;
           element.dist = getDistanceFromLatLonInKm(latLng.lat, latLng.lng, lat, lng);
           element.lastTimeStamp = new Date();
           if(element.dist < 0.02){
-            return element;
+            return wpInRange.push(element);
           }
 
         });
-        console.log(wpDistances);
-        if(wpDistances.length > 0){
+        console.log(wpInRange);
+        if(wpInRange.length > 0){
             console.log("update");
-            Meteor.call('updateScores', self.data.resultId, wpDistances);
+            Meteor.call('updateScores', wpDistances);
         }
       }
 
       if(self.data.showCurrentLocation && self.data.saveLocation && (Date.now() - lastSaved > 5000)){
         if(!self.data.resultId)
-          Meteor.error('resultId not set');
+          Meteor.Error('resultId not set');
         saveLocationToHistory(self.data.resultId, latLng.lat+","+latLng.lng);
         lastSaved = Date.now();
       }
