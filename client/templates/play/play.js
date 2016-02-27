@@ -59,11 +59,19 @@ Template.play.helpers({
 });
 
 Template.play.events({
+<<<<<<< HEAD
   "click button.button-stop": function (event, template) {
     console.log("stop");
     confirm("Are your sure you want to stop this game?", function(val){
       if(val){
         Meter.call('stopGame');
+=======
+  "click .button-stop": function (event, template) {
+    console.log("stop");
+    confirm("Are your sure you want to stop this game?", function(val){
+      if(val){
+        Meteor.call('stopGame');
+>>>>>>> b27436ddf06fe9bc4f1e2ca0b568e2f0861f48e7
         Router.go('gamesList');
       }
     })
