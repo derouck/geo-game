@@ -15,15 +15,27 @@
                             <p>You have no waypoints added yet!</p>
                         {{/each}}
 
-                        {{#if isAuthor}}
+
+                        {{#if isEditable}}
+                            {{#if isAuthor}}
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="{{pathFor "addWaypoint" _id}}"
+                                               class="button button-positive button-block button-outline">Add Waypoint</a>
+                                        </div>
+                                        <div class="col">
+                                            <button id="publishGame" class="button button-positive button-block button-outline">Publish</button>
+                                        </div>
+                                    </div>
+                            {{/if}}
+                        {{else}}
                             <div class="row">
                                 <div class="col">
-                                    <a href="{{pathFor "addWaypoint" _id}}"
-                                       class="button button-positive button-block button-outline">Add Waypoint</a>
+                                    <button id="startGame" class="button button-positive button-block button-outline">Play</button>
                                 </div>
                                 <div class="col">
-                                    <a href="{{pathFor "addWaypoint" _id}}"
-                                       class="button button-positive button-block button-outline">Publish</a>
+                                    <a href="{{pathFor "leaderboard" _id}}"
+                                       class="button button-positive button-block button-outline">Leaderboard</a>
                                 </div>
                             </div>
                         {{/if}}
