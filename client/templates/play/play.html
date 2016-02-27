@@ -10,13 +10,13 @@
   {{/contentFor}}
   {{#contentFor "headerButtonRight"}}
 
-    <button class="button button-clear button-stop">Stop</button>
+
   {{/contentFor}}
 
     {{#ionView}}
         {{#ionContent}}
           {{> map waypoints=waypoints history=locationsHistory showCurrentLocation=1 saveLocation=1 resultId=resultId}}
-
+<button class="button button-clear button-stop">Stop</button>
         {{/ionContent}}
     {{/ionView}}
 </template>
