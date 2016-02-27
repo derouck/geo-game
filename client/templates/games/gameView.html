@@ -6,11 +6,16 @@
     {{#ionView}}
         {{#ionContent}}
             <section id="game">
+                {{#with game}}
                 {{#ionList}}
-                  {{#with game}}
-{{name}}
-                  {{/with}}
+                      {{> gameCard}}
+                      {{name}}
+                      {{#if isAuthor}}
+                          <a href="{{pathFor "addWaypoint" _id}}">Add Waypoint</a>
+                          <a href="{{pathFor "addWaypoint" _id}}">Publish</a>
+                      {{/if}}
                 {{/ionList}}
+                {{/with}}
             </section>
         {{/ionContent}}
     {{/ionView}}

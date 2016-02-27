@@ -101,7 +101,7 @@ Meteor.methods({
 
 		let waypointId = Waypoints.insert(doc);
 
-		return waypointId;
+		return game._id;
 
 		//const game = Games.findOne(id);
 		//if(! game){
