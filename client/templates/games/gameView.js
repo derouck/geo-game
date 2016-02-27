@@ -11,6 +11,9 @@ Template.gameView.helpers({
     },
     waypoints: function(){
         return Waypoints.find().fetch();
+    },
+    waypointsList: function(){
+        return _.map(Waypoints.find().fetch(), function(element){ return element.location});
     }
 });
 

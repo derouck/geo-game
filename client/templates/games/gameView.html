@@ -7,13 +7,18 @@
         {{#ionContent}}
             <section id="game">
                 {{#with game}}
-                    {{#ionList}}
-                        {{> gameCard}}
-                        {{#each waypoints}}
-                            {{name}} - {{description}}
-                        {{else}}
-                            <p>You have no waypoints added yet!</p>
-                        {{/each}}
+                    <div class="list card gameCard">
+                          <div class="item">
+                            <h2>{{name}}</h2>
+                          </div>
+                          <div class="item item-body">
+                            <p>{{description}}</p>
+                          </div>
+                          <div class="item" style="height:300px;padding:0px;">
+                            {{> map waypoints=waypoints}}
+                          </div>
+                        </div>
+
 
                         {{#if isAuthor}}
                             <div class="row">
@@ -33,7 +38,6 @@
                                    class="button button-positive button-block button-outline">Leaderboard</a>
                             </div>
                         </div>
-                    {{/ionList}}
                 {{/with}}
             </section>
         {{/ionContent}}
