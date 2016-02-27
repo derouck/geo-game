@@ -7,8 +7,8 @@
 //    return Meteor.users.find({}); //, {"fields": { "username": 1,"nearestBeacon":1}});
 // });
 
-Meteor.publish('beacons', function() {
-   return Beacons.find();
+Meteor.publish('waypoints', function() {
+   return Waypoints.find();
 });
 
 Meteor.publish('games', function() {
