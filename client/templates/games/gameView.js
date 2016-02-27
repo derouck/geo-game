@@ -21,5 +21,13 @@ Template.gameView.helpers({
 });
 
 Template.gameView.events({
+    "click #startGame": function(){
+        console.log(this._id);
 
+        Meteor.call('startGame', this._id, function(err,result){
+            if(!err){
+                Router.go('/play');
+            }
+        });
+    }
 });
