@@ -7,7 +7,8 @@
 
     {{#ionView}}
         {{#ionContent}}
-          {{> map}}
+          {{> map waypoints=waypoints showCurrentLocation=1 saveLocationToResult=1 resultId=resultId}}
+
         {{/ionContent}}
     {{/ionView}}
 </template>
