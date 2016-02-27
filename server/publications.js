@@ -34,7 +34,7 @@ Meteor.publishComposite('currentGame', function(gameId){
                 children: [
                     {
                         find: function (result) {
-                            return Meteor.users.find({_id: result.userId}, {fields: "username"});
+                            return Meteor.users.find({_id: result.userId}, {fields: {"username":1}});
                         }
                     }
                 ]
@@ -51,3 +51,6 @@ Meteor.publish('teamScores', function(){
     return Games.find({status: "Finished"});
 });
 
+Meteor.publish('results', function() {
+    return Results.find();
+});

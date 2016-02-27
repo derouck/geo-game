@@ -9,10 +9,10 @@
         {{#ionContent}}
             <section id="leaderboard">
                 {{#ionList}}
-                    {{#each teams}}
+                    {{#each results}}
                         {{#ionItem avatar=true}}
                             <img src="http://api.adorable.io/avatars/50/{{teamName}}" class="user-image"/>
-                            <p>{{@index}} - {{teamName}} : {{score}}</p>
+                            <p>{{@index}} - {{username.username}} : {{score}}</p>
                         {{/ionItem}}
                     {{/each}}
                 {{/ionList}}
