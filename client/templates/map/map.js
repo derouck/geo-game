@@ -61,7 +61,6 @@ Template.map.onCreated(function() {
 
       if(self.data.showCurrentLocation){
 
-
         var latLng = Geolocation.latLng();
         if (! latLng)
           return;
@@ -96,8 +95,8 @@ Template.map.onCreated(function() {
         });
         console.log(wpInRange);
         if(wpInRange.length > 0){
-            console.log("update");
-            Meteor.call('updateScores', wpDistances);
+            
+            Meteor.call('updateScores', wpInRange);
         }
       }
 
