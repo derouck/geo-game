@@ -1,27 +1,25 @@
 const getCurrentResult = () => {
 
-  return Result.find({userId:Meteor.userId()});
+  return Results.findOne({userId:Meteor.userId()});
 }
 
 const getCurrentGame = () => {
-
-  return Games.find({_id:getCurrentResult().fetch().id});
+  gameId = getCurrentResult().gameId;
+  return Games.findOne({_id:gameId});
 }
 
 const getCurrentGameWaypoints = () => {
-
-  //let gameId = getCurrentGame().fetch().id;
-  let gameId = "3aP2G43Dfge9E7Wib";
+  game = getCurrentGame();
+  let gameId = getCurrentGame()._id;
   return Waypoints.find({gameId:gameId}).fetch();
 }
 
 Template.map.onCreated(function() {
 
   const self = this;
-  const handle  = this.subscribe('waypoints');
+  const handle  = this.subscribe('currentResult');
   self.autorun(() => {
     const isReady = handle.ready();
-    console.log(`Handle is ${isReady ? 'ready' : 'not ready'}`);
   });
 
 });
@@ -32,8 +30,11 @@ Template.play.helpers({
     let wps = getCurrentGameWaypoints();
     return wps;
   },
+  locationsHistory(){
+    return LocationsHistory.find({resultId:getCurrentResult()._id, userId: Meteor.userId()});
+  },
   resultId(){
-    let wps = getCurrentResult().fetch().id;
+    let wps = getCurrentResult()._id;
     return wps;
   }
 });

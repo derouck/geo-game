@@ -1,8 +1,8 @@
 Meteor.startup(function () {
     if(Meteor.users.find().count() == 0) {
         var users = [
-            {name: "chris", username: "chris", email: "chris@geogames.com", roles: ['admin']},
             {name: "alexis", username: "alexis", email: "alexis@geogames.com", roles: ['admin']},
+            {name: "chris", username: "chris", email: "chris@geogames.com", roles: ['admin']},
             {name: "joni", username: "joni", email: "joni@geogames.com", roles: ['admin']}
         ];
 
@@ -37,6 +37,8 @@ Meteor.startup(function () {
         Waypoints.insert({ "name" : "start point", "description" : ".....", "location" : "28.149741799999997,-15.43010740000001", "userId" :user._id, "gameId" : game._id});
         Waypoints.insert({ "name" : "start point", "description" : ".....", "location" : "28.149742799999997,-15.43010840000001", "userId" :user._id, "gameId" : game._id});
 
+
+        Results.remove({});
         if(Results.find().count() === 0) {
 
            game = Games.findOne();
@@ -46,6 +48,7 @@ Meteor.startup(function () {
             userId: user._id,
             gameId: game._id,
             score: 123,
+            status: 1,
             data:[
               {
                 waypointId: "dAD6J3gGmos7Rnmck",
