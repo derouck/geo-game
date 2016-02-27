@@ -28,6 +28,12 @@ Meteor.methods({
 	startGame: function(id) {
 		console.log("Start game: " + id);
 
+		// Interrupt other running games
+		let startedGame = Results.findOne({userId: this.userId, status: GAME_STARTED});
+		if(startedGame) {
+			Results.update({_id: startedGame._id}, {$set: {status: GAME_INTERRUPTED}});
+		}
+
 		// validate user logged in
 		// validate game
 
@@ -48,6 +54,32 @@ Meteor.methods({
 			location:location,
 			time: new Date()
 		});
+	},
+	updateScores: function(doc){
+		console.log(doc);
+
+		// Interrupt other running games
+		let startedGame = Results.findOne({userId: this.userId, status: GAME_STARTED});
+		if(startedGame) {
+//			let waypoints = Waypoints.find({gameId: startedGame.gameId},{sort: {createdAt: -1}});
+
+			doc.forEach(function(entry){
+//				entry.waypointId;
+//				entry.timestamp;
+//				entry.distance
+
+				Results.update({_id: startedGame._id}, {$addToSet: {data: document}});
+			});
+		}
+	},
+	stopGame: function(){
+		console.log("Stop game");
+
+		// Interrupt other running games
+		let startedGame = Results.findOne({userId: this.userId, status: GAME_STARTED});
+		if(startedGame) {
+			Results.update({_id: startedGame._id}, {$set: {status: GAME_FINISHED}});
+		}
 	}
 });
 
