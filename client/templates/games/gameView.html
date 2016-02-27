@@ -9,10 +9,15 @@
                 {{#with game}}
                 {{#ionList}}
                       {{> gameCard}}
-                      {{name}}
                       {{#if isAuthor}}
-                          <a href="{{pathFor "addWaypoint" _id}}">Add Waypoint</a>
-                          <a href="{{pathFor "addWaypoint" _id}}">Publish</a>
+                          <div class="row">
+                              <div class="col">
+                                <a href="{{pathFor "addWaypoint" _id}}" class="button button-positive button-block button-outline">Add Waypoint</a>
+                              </div>
+                              <div class="col">
+                                  <a href="{{pathFor "addWaypoint" _id}}" class="button button-positive button-block button-outline">Publish</a>
+                              </div>
+                          </div>
                       {{/if}}
                 {{/ionList}}
                 {{/with}}
