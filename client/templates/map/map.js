@@ -93,9 +93,9 @@ Template.map.onCreated(function() {
           }
 
         });
-        console.log(wpInRange);
+
         if(wpInRange.length > 0){
-            
+            console.log(wpInRange);
             Meteor.call('updateScores', wpInRange);
         }
       }

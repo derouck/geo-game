@@ -17,7 +17,12 @@
 
             {{#if isNotActiveRoute regex='login'}}
                 {{> ionTab title="GAMES" path="gamesList" iconOff="ios-game-controller-b-outline" iconOn="ios-game-controller-b"}}
-                {{> ionTab title="CREATE GAME" path="createGame" iconOff="plus" iconOn="plus"}}
+
+                {{#if hasCurrentGame}}
+                  {{> ionTab title="PLAY" path="play" iconOff="ios-play-outline" iconOn="ios-play"}}
+                {{else}}
+                  {{> ionTab title="CREATE" path="createGame" iconOff="ios-plus-outline" iconOn="ios-plus"}}
+                {{/if}}
             {{/if}}
         {{/ionTabs}}
     {{/ionBody}}

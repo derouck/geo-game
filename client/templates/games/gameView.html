@@ -3,6 +3,10 @@
         <h1 class="title">Game</h1>
     {{/contentFor}}
 
+    {{#contentFor "headerButtonLeft"}}
+      {{>ionNavBackButton class="button-positive" text=false}}
+    {{/contentFor}}
+    
     {{#ionView}}
         {{#ionContent}}
             <section id="game">
