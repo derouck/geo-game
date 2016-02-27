@@ -69,6 +69,7 @@ Meteor.methods({
 
 				document.points = 50;
 				document.timestamp = entry.lastTimeStamp;
+				console.log(document);
 
 				let updated = false;
 				startedGame.data.forEach(function(previousResult){
