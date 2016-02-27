@@ -20,7 +20,7 @@ Meteor.publishComposite('currentGame', function(gameId){
             },
             {
                 find: function (game) {
-                    return Results.find({gameId: game._id});
+                    return Results.find({gameId: game._id,status: GAME_FINISHED});
                 },
                 children: [
                     {

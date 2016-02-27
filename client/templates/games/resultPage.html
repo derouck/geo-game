@@ -1,19 +1,21 @@
-<template name="leaderboard">
+<template name="resultpage">
     {{#contentFor "headerTitle"}}
-        <h1 class="title">LEADERBOARD</h1>
+        <h1 class="title">RESULT</h1>
         {{>logout}}
     {{/contentFor}}
 
 
     {{#ionView}}
         {{#ionContent}}
-            <section id="leaderboard">
+            <section id="result">
                 {{#ionList}}
                     {{#if results}}
                         {{#each results}}
                             {{#ionItem avatar=true}}
                                 <img src="http://api.adorable.io/avatars/50/{{teamName}}" class="user-image"/>
-                                <p>{{@index}} - {{username.username}} : {{score}}</p>
+                                <p><b>Player:</b><br />{{username.username}}</p>
+                                <p><b>Score:</b><br />{{score}}</p>
+                                <p><b>Starded at:</b><br />{{createdAt}}</p>
                             {{/ionItem}}
                         {{/each}}
                     {{else}}
@@ -23,8 +25,12 @@
                 {{/ionList}}
                 <div class="row">
                   <div class="col">
-                    <a href="{{pathFor "gameView" _id}}"
-                       class="button button-positive button-block button-outline">Back</a>
+                    <a href="{{pathFor "leaderboard" _id}}"
+                       class="button button-positive button-block button-outline">Leaderboard</a>
+                  </div>
+                  <div class="col">
+                    <a href="{{pathFor "gamesList"}}"
+                       class="button button-positive button-block button-outline">Games list</a>
                   </div>
                 </div>
             </section>

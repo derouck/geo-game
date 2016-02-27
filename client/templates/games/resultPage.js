@@ -1,4 +1,4 @@
-Template.leaderboard.onCreated(function(){
+Template.resultpage.onCreated(function(){
 	var instance = this;
 
 	instance.autorun(function () {
@@ -12,7 +12,7 @@ Results.helpers({
 	}
 });
 
-Template.leaderboard.helpers({
+Template.resultpage.helpers({
 	results: function(){
 		return Results.find({gameId: this.gameId}).fetch();
 	},
