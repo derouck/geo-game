@@ -7,19 +7,27 @@
         {{#ionContent}}
             <section id="game">
                 {{#with game}}
-                {{#ionList}}
-                      {{> gameCard}}
-                      {{#if isAuthor}}
-                          <div class="row">
-                              <div class="col">
-                                <a href="{{pathFor "addWaypoint" _id}}" class="button button-positive button-block button-outline">Add Waypoint</a>
-                              </div>
-                              <div class="col">
-                                  <a href="{{pathFor "addWaypoint" _id}}" class="button button-positive button-block button-outline">Publish</a>
-                              </div>
-                          </div>
-                      {{/if}}
-                {{/ionList}}
+                    {{#ionList}}
+                        {{> gameCard}}
+                        {{#each waypoints}}
+                            {{name}} - {{description}}
+                        {{else}}
+                            <p>You have no waypoints added yet!</p>
+                        {{/each}}
+
+                        {{#if isAuthor}}
+                            <div class="row">
+                                <div class="col">
+                                    <a href="{{pathFor "addWaypoint" _id}}"
+                                       class="button button-positive button-block button-outline">Add Waypoint</a>
+                                </div>
+                                <div class="col">
+                                    <a href="{{pathFor "addWaypoint" _id}}"
+                                       class="button button-positive button-block button-outline">Publish</a>
+                                </div>
+                            </div>
+                        {{/if}}
+                    {{/ionList}}
                 {{/with}}
             </section>
         {{/ionContent}}

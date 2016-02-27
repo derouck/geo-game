@@ -91,24 +91,17 @@ Meteor.methods({
 	//	return result;
 	//}
 	"addWaypoint": function(doc){
+		const game = Games.findOne(doc.gameId);
+		if(! game){
+			throw new Meteor.Error(402, "You've given a wrong game!");
+		}
+
 		console.log(doc);
 
 		doc.userId = this.userId;
+		Waypoints.insert(doc);
 
-		let game = Games.findOne();;
-		doc.gameId = game._id;
-
-
-		let waypointId = Waypoints.insert(doc);
-
-		return game._id;
-
-		//const game = Games.findOne(id);
-		//if(! game){
-		//	throw new Meteor.Error(402, "You've given a wrong game!");
-		//}
-
-
+		return doc.gameId;
 	}
 });
 

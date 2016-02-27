@@ -8,6 +8,9 @@ Template.gameView.helpers({
     },
     isAuthor: function(){
         return Meteor.userId() == this.userId;
+    },
+    waypoints: function(){
+        return Waypoints.find().fetch();
     }
 });
 

@@ -15,8 +15,32 @@ Meteor.publish('games', function() {
    return Games.find();
 });
 
-Meteor.publish('currentGame', function(id) {
-  return Games.find({_id: id});
+Meteor.publishComposite('currentGame', function(gameId){
+    return {
+        find: function () {
+            console.log("GameID" + gameId);
+            return Games.find({_id: gameId});
+        },
+        children: [
+            {
+                find: function (game) {
+                    return Waypoints.find({gameId: game._id});
+                }
+            },
+            {
+                find: function (game) {
+                    return Results.find({gameId: game._id});
+                },
+                children: [
+                    {
+                        find: function (result) {
+                            return Meteor.users.find({_id: result.userId}, {fields: "username"});
+                        }
+                    }
+                ]
+            }
+        ]
+    }
 });
 
 Meteor.publish('readyGames', function(){
@@ -26,3 +50,4 @@ Meteor.publish('readyGames', function(){
 Meteor.publish('teamScores', function(){
     return Games.find({status: "Finished"});
 });
+
