@@ -26,7 +26,17 @@ Template.gameView.events({
 
         Meteor.call('startGame', this._id, function(err,result){
             if(!err){
+                sAlert.success('Game started!');
                 Router.go('/play');
+            }
+        });
+    },
+    "click #publishGame": function(){
+        console.log(this._id);
+
+        Meteor.call('publishGame', this._id, function(err,result){
+            if(!err){
+                sAlert.success('Game published');
             }
         });
     }
