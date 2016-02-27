@@ -1,9 +1,9 @@
 Meteor.startup(function () {
     if(Meteor.users.find().count() == 0) {
         var users = [
-            {name: "chris", email: "chris@geogames.com", roles: ['admin']},
-            {name: "alexis", email: "alexis@geogames.com", roles: ['admin']},
-            {name: "joni", email: "joni@geogames.com", roles: ['admin']}
+            {name: "chris", username: "chris", email: "chris@geogames.com", roles: ['admin']},
+            {name: "alexis", username: "alexis", email: "alexis@geogames.com", roles: ['admin']},
+            {name: "joni", username: "joni", email: "joni@geogames.com", roles: ['admin']}
         ];
 
         var userId;
