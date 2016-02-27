@@ -90,6 +90,26 @@ Meteor.methods({
     //
 	//	return result;
 	//}
+	"addWaypoint": function(doc){
+		console.log(doc);
+
+		doc.userId = this.userId;
+
+		let game = Games.findOne();;
+		doc.gameId = game._id;
+
+
+		let waypointId = Waypoints.insert(doc);
+
+		return waypointId;
+
+		//const game = Games.findOne(id);
+		//if(! game){
+		//	throw new Meteor.Error(402, "You've given a wrong game!");
+		//}
+
+
+	}
 });
 
 function calculateTimeDifference(startMoment, endMoment)
