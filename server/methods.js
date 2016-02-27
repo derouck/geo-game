@@ -61,14 +61,34 @@ Meteor.methods({
 		// Interrupt other running games
 		let startedGame = Results.findOne({userId: this.userId, status: GAME_STARTED});
 		if(startedGame) {
-//			let waypoints = Waypoints.find({gameId: startedGame.gameId},{sort: {createdAt: -1}});
-
 			doc.forEach(function(entry){
-//				entry.waypointId;
-//				entry.timestamp;
-//				entry.distance
+				let document = {};
+				document.waypointId = entry._id;
+				document.distance = entry.dist;
+				//TODO: add score
 
-				Results.update({_id: startedGame._id}, {$addToSet: {data: document}});
+				document.points = 50;
+				document.timestamp = entry.lastTimeStamp;
+
+				let updated = false;
+				startedGame.data.forEach(function(previousResult){
+					if(previousResult.waypointId == entry._id){
+						if(previousResult.distance < entry.dist){
+							Results.update(
+								{_id: startedGame._id},
+								{$pull: { data: { waypointId: previousResult.waypointId}}});
+
+							Results.update({_id: startedGame._id}, {$addToSet: {data: document}});
+
+							updated = true;
+							return true;
+						}
+					}
+				});
+
+				if(!updated){
+					Results.update({_id: startedGame._id}, {$addToSet: {data: document}});
+				}
 			});
 		}
 	},
